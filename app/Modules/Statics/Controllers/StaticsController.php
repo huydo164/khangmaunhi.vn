@@ -17,7 +17,6 @@ class StaticsController extends BaseStaticsController{
 
         Loader::loadJS('libs/owl.carousel/owl.carousel.min.js', CGlobal::$postEnd);
         Loader::loadCSS('libs/owl.carousel/owl.carousel.min.css', CGlobal::$postHead);
-        
 
         $messages = Utility::messages('messages');
 
