@@ -41,24 +41,23 @@ use App\Library\PHPDev\ThumbImg;
                             </div>
                         </div>
                     </li>
-                    <li >
-                        <a href="" class="active">Trang chủ</a>
-                    </li>
-                    <li>
-                        <a href="">Sản phẩm</a>
-                    </li>
-                    <li class="logo">
-                        <a href=""><img src="http://localhost/project.vn/khangmaunhi/public/assets/frontend/img/LOGO01.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="">Bệnh lý</a>
-                    </li>
-                    <li>
-                        <a href="">Cẩm nang</a>
-                    </li>
-                    <li>
-                        <a href="">Đặt hàng</a>
-                    </li>
+                    @if(isset($arrCategory) && !empty($arrCategory))
+                        @foreach($arrCategory as $cat)
+                            @if($cat->category_menu == CGlobal::status_show && $cat->category_parent_id == 0)
+                                <?php $i=0 ?>
+                                @foreach($arrCategory as $sub)
+                                    @if($sub->category_menu == CGlobal::status_show && $sub->category_parent_id == $cat->category_id)
+                                        <?php $i++; ?>
+                                    @endif
+                                @endforeach
+                                <li>
+                                    <a @if($i > 0) @endif title="{{$cat->category_title}}" href="">
+                                        {{$cat->category_title}}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>

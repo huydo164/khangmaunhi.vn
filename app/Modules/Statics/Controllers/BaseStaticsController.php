@@ -64,7 +64,7 @@ class BaseStaticsController extends Controller{
         $arrCategory = Category::getAllCategory(0, array(), 0);
         View::share('arrCategory',$arrCategory);
 
-        $textHotline = strip_tags(self::viewShareVal('SITE_HOTLINE'));
+        $textHotline = strip_tags(self::viewShareVal('SITE_HOTLIINE'));
         View::share('textHotline',$textHotline);
 
         $textaddress = self::viewShareVal('SITE_FOOTER_LEFT');

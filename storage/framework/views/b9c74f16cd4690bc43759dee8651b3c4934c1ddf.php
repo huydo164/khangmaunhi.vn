@@ -41,24 +41,24 @@ use App\Library\PHPDev\ThumbImg;
                             </div>
                         </div>
                     </li>
-                    <li >
-                        <a href="" class="active">Trang chủ</a>
-                    </li>
-                    <li>
-                        <a href="">Sản phẩm</a>
-                    </li>
-                    <li class="logo">
-                        <a href=""><img src="http://localhost/project.vn/khangmaunhi/public/assets/frontend/img/LOGO01.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="">Bệnh lý</a>
-                    </li>
-                    <li>
-                        <a href="">Cẩm nang</a>
-                    </li>
-                    <li>
-                        <a href="">Đặt hàng</a>
-                    </li>
+                    <?php if(isset($arrCategory) && !empty($arrCategory)): ?>
+                        <?php $__currentLoopData = $arrCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($cat->category_menu == CGlobal::status_show && $cat->category_parent_id == 0): ?>
+                                <?php $i=0 ?>
+                                <?php $__currentLoopData = $arrCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($sub->category_menu == CGlobal::status_show && $sub->category_parent_id == $cat->category_id): ?>
+                                        <?php $i++; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <li>
+                                    <a <?php if($i > 0): ?> <?php endif; ?> title="<?php echo e($cat->category_title); ?>" href="">
+                                        <?php echo e($cat->category_title); ?>
+
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

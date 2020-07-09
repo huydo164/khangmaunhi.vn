@@ -20,4 +20,10 @@ Route::group(['middleware' => ['web'], 'prefix' => '/', 'namespace' => $namespac
 
     Route::get('page-product', array('as' => 'site.pageProduct', 'uses' => 'StaticsController@pageProduct'));
 
+    Route::get('page-BVCT', array('as' => 'site.pageBVCT', 'uses' => 'StaticsController@pageBVCT'));
+
+    Route::get('page-cam-nang', array('as' => 'site.pageCamnang', 'uses' => 'StaticsController@pageCamnang'));
+
+    Route::get('{name}-{id}.html', array('as' => 'site.actionRouter', 'uses' => 'StaticsController@actionRouter'))->where('name', '[A-Z0-9a-z)_\-]+')->where('id','[0-9]+');
+
 });

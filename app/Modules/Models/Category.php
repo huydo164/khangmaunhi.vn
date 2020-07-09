@@ -24,7 +24,7 @@ class Category extends Model{
     public  $timestamps = false;
     protected $fillable = array(
         'category_id', 'category_parent_id', 'category_type_id', 'category_type_keyword', 'category_title','category_title_alias', 'category_intro', 'category_content',
-        'category_menu', 'category_menu_left', 'category_menu_content', 'category_menu_footer', 'category_created','category_order_no', 'category_status', 'category_image',
+        'category_menu', 'category_menu_footer', 'category_created','category_order_no', 'category_status', 'category_image',
         'category_link_replace', 'category_hot', 'meta_title', 'meta_keywords', 'meta_description',
     );
 
@@ -45,12 +45,6 @@ class Category extends Model{
             if (isset($dataSearch['category_menu']) && $dataSearch['category_menu'] != -1) {
                 $query->where('category_menu', $dataSearch['category_menu']);
             }
-            if (isset($dataSearch['category_menu_left']) && $dataSearch['category_menu_left'] != -1) {
-                $query->where('category_menu_left', $dataSearch['category_menu_left']);
-            }
-            if (isset($dataSearch['category_menu_content']) && $dataSearch['category_menu_content'] != -1) {
-                $query->where('category_menu_content', $dataSearch['category_menu_content']);
-            }
             if (isset($dataSearch['category_menu_footer']) && $dataSearch['category_menu_footer'] != -1) {
                 $query->where('category_menu_footer', $dataSearch['category_menu_footer']);
             }
@@ -59,7 +53,7 @@ class Category extends Model{
             }
 
             $total = $query->count();
-            $query->orderBy('category_type_keyword', 'asc');
+            $query->orderBy('category_type_keyword', 'desc');
 
             $fields = (isset($dataSearch['field_get']) && trim($dataSearch['field_get']) != '') ? explode(',',trim($dataSearch['field_get'])): array();
             if(!empty($fields)){
