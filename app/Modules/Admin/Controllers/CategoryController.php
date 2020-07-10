@@ -25,8 +25,6 @@ class CategoryController extends BaseAdminController{
 
     private $arrStatus = array(-1 => '--Chọn--', CGlobal::status_hide => 'Ẩn', CGlobal::status_show => 'Hiện');
     private $arrMenu = array(-1 => '--Chọn--', CGlobal::status_hide => 'Ẩn', CGlobal::status_show => 'Hiện');
-    private $arrMenuLeft = array(-1 => '--Chọn--', CGlobal::status_hide => 'Ẩn', CGlobal::status_show => 'Hiện');
-    private $arrContent = array(-1 => '--Chọn--', CGlobal::status_hide => 'Ẩn', CGlobal::status_show => 'Hiện');
     private $arrFooter = array(-1 => '--Chọn--', CGlobal::status_hide => 'Ẩn', CGlobal::status_show => 'Hiện');
     private $arrHot = array(-1 => '--Chọn--', CGlobal::status_hide => 'Ẩn', CGlobal::status_show => 'Hiện');
 
@@ -59,8 +57,6 @@ class CategoryController extends BaseAdminController{
         $search['category_title'] = addslashes(Request::get('category_title', ''));
         $search['category_status'] = (int)Request::get('category_status', -1);
         $search['category_menu'] = (int)Request::get('category_menu', -1);
-        $search['category_menu_left'] = (int)Request::get('category_menu_left', -1);
-        $search['category_menu_content'] = (int)Request::get('category_menu_content', -1);
         $search['category_menu_footer'] = (int)Request::get('category_menu_footer', -1);
         $search['category_type_id'] = (int)Request::get('category_type_id', -1);
         $search['category_hot'] = (int)Request::get('category_hot', -1);
@@ -78,8 +74,6 @@ class CategoryController extends BaseAdminController{
                     'category_type_keyword'=>$v->category_type_keyword,
                     'category_parent_id'=>$v->category_parent_id,
                     'category_menu'=>$v->category_menu,
-                    'category_menu_left'=>$v->category_menu_left,
-                    'category_menu_content'=>$v->category_menu_content,
                     'category_menu_footer'=>$v->category_menu_footer,
                     'category_hot'=>$v->category_hot,
                     'category_created'=>$v->category_created,
@@ -97,8 +91,6 @@ class CategoryController extends BaseAdminController{
 
         $optionStatus = Utility::getOption($this->arrStatus, $search['category_status']);
         $optionMenu = Utility::getOption($this->arrMenu, $search['category_menu']);
-        $optionMenuLeft = Utility::getOption($this->arrMenuLeft, $search['category_menu_left']);
-        $optionContent = Utility::getOption($this->arrContent, $search['category_menu_content']);
         $optionFooter = Utility::getOption($this->arrFooter, $search['category_menu_footer']);
         $optionType = Utility::getOption($this->arrType, $search['category_type_id']);
         $optionHot = Utility::getOption($this->arrHot, $search['category_hot']);
@@ -112,10 +104,6 @@ class CategoryController extends BaseAdminController{
             'optionStatus'=>$optionStatus,
             'arrMenu'=>$this->arrMenu,
             'optionMenu'=>$optionMenu,
-            'arrMenuLeft'=>$this->arrMenuLeft,
-            'optionMenuLeft'=>$optionMenuLeft,
-            'arrContent'=> $this->arrContent,
-            'optionContent'=> $optionContent,
             'arrFooter'=> $this->arrFooter,
             'optionFooter'=> $optionFooter,
             'arrType'=> $this->arrType,
@@ -134,8 +122,6 @@ class CategoryController extends BaseAdminController{
         }
         $optionStatus = Utility::getOption($this->arrStatus, isset($data['category_status'])? $data['category_status'] : CGlobal::status_show);
         $optionMenu = Utility::getOption($this->arrMenu, isset($data['category_menu'])? $data['category_menu'] : -1);
-        $optionMenuLeft = Utility::getOption($this->arrMenuLeft, isset($data['category_menu_left'])? $data['category_menu_left'] : -1);
-        $optionContent = Utility::getOption($this->arrContent, isset($data['category_menu_content'])? $data['category_menu_content'] : -1);
         $optionFooter = Utility::getOption($this->arrFooter, isset($data['category_menu_footer'])? $data['category_menu_footer'] : -1);
         $optionType = Utility::getOption($this->arrType, isset($data['category_type_id'])? $data['category_type_id'] : -1);
         $optionHot = Utility::getOption($this->arrHot, isset($data['category_hot'])? $data['category_hot'] : -1);
@@ -146,8 +132,6 @@ class CategoryController extends BaseAdminController{
             'data'=>$data,
             'optionStatus'=>$optionStatus,
             'optionMenu'=>$optionMenu,
-            'optionMenuLeft'=>$optionMenuLeft,
-            'optionContent'=>$optionContent,
             'optionFooter'=>$optionFooter,
             'optionType'=>$optionType,
             'optionHot'=>$optionHot,
@@ -168,8 +152,6 @@ class CategoryController extends BaseAdminController{
             'category_parent_id'=>array('value'=>(int)addslashes(Request::get('category_parent_id')),'require'=>0),
             'category_type_id'=>array('value'=>(int)addslashes(Request::get('category_type_id')),'require'=>0),
             'category_menu'=>array('value'=>(int)Request::get('category_menu', -1),'require'=>0),
-            'category_menu_left'=>array('value'=>(int)(Request::get('category_menu_left')),'require'=>0),
-            'category_menu_content'=>array('value'=>(int)(Request::get('category_menu_content')),'require'=>0),
             'category_menu_footer'=>array('value'=>(int)(Request::get('category_menu_footer')),'require'=>0),
             'category_hot'=>array('value'=>(int)(Request::get('category_hot', -1)),'require'=>0),
             'category_status'=>array('value'=>(int)(Request::get('category_status')),'require'=>0),
@@ -218,8 +200,6 @@ class CategoryController extends BaseAdminController{
 
         $optionStatus = Utility::getOption($this->arrStatus, isset($data['category_status'])? $data['category_status'] : CGlobal::status_show);
         $optionMenu = Utility::getOption($this->arrMenu, isset($data['category_menu'])? $data['category_menu'] : -1);
-        $optionMenuLeft = Utility::getOption($this->arrMenuLeft, isset($data['category_menu_left'])? $data['category_menu_left'] : -1);
-        $optionContent = Utility::getOption($this->arrContent, isset($data['category_menu_content'])? $data['category_menu_content'] : -1);
         $optionFooter = Utility::getOption($this->arrFooter, isset($data['category_menu_footer'])? $data['category_menu_footer'] : -1);
         $optionType = Utility::getOption($this->arrType, isset($data['category_type_id'])? $data['category_type_id'] : -1);
         $optionHot = Utility::getOption($this->arrHot, isset($data['category_hot'])? $data['category_hot'] : -1);
@@ -230,8 +210,6 @@ class CategoryController extends BaseAdminController{
             'data'=>$data,
             'optionStatus'=>$optionStatus,
             'optionMenu'=>$optionMenu,
-            'optionMenuLeft'=>$optionMenuLeft,
-            'optionContent'=>$optionContent,
             'optionFooter'=>$optionFooter,
             'optionType'=>$optionType,
             'optionHot'=>$optionHot,

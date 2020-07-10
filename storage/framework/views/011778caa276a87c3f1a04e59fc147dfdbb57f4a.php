@@ -52,23 +52,6 @@ use App\Library\PHPDev\CGlobal;
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-2">
-                                        <label class="control-label">Menu trái</label>
-                                        <div>
-                                            <select class="form-control input-sm" name="category_menu_left">
-                                                <?php echo $optionMenuLeft; ?>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-2">
-                                        <label class="control-label">Content trang chủ</label>
-                                        <div><select class="form-control input-sm" name="category_menu_content">
-                                                <?php echo $optionContent; ?>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-2">
                                         <label class="control-label">Menu chân trang</label>
                                         <div><select class="form-control input-sm" name="category_menu_footer">
                                                 <?php echo $optionFooter; ?>
@@ -130,8 +113,6 @@ use App\Library\PHPDev\CGlobal;
                                         <th width="10%">Tiêu đề</th>
                                         <th width="8%">Kiểu danh mục</th>
                                         <th width="6%">Menu ngang</th>
-                                        <th width="5%">Menu trái</th>
-                                        <th width="5%">Trang chủ</th>
                                         <th width="6%">Chân trang</th>
                                         <th width="6%">Nổi bật</th>
                                         <th width="5%">Thứ tự</th>
@@ -158,20 +139,6 @@ use App\Library\PHPDev\CGlobal;
                                                 </td>
                                                 <td class="text-center">
                                                     <?php if($item['parent']['category_menu'] == '1'): ?>
-                                                        <i class="fa fa-check fa-admin green"></i>
-                                                    <?php else: ?>
-                                                        <i class="fa fa-remove fa-admin red"></i>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php if($item['parent']['category_menu_left'] == '1'): ?>
-                                                        <i class="fa fa-check fa-admin green"></i>
-                                                    <?php else: ?>
-                                                        <i class="fa fa-remove fa-admin red"></i>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php if($item['parent']['category_menu_content'] == '1'): ?>
                                                         <i class="fa fa-check fa-admin green"></i>
                                                     <?php else: ?>
                                                         <i class="fa fa-remove fa-admin red"></i>

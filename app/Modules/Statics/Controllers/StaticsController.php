@@ -11,6 +11,7 @@ use App\Library\PHPDev\Loader;
 use App\Library\PHPDev\CGlobal;
 use App\Library\PHPDev\Utility;
 use App\Modules\Models\Category;
+use App\Modules\Models\Info;
 use Illuminate\Support\Facades\Redirect;
 
 class StaticsController extends BaseStaticsController{
@@ -20,11 +21,15 @@ class StaticsController extends BaseStaticsController{
         Loader::loadJS('libs/owl.carousel/owl.carousel.min.js', CGlobal::$postEnd);
         Loader::loadCSS('libs/owl.carousel/owl.carousel.min.css', CGlobal::$postHead);
 
+        $text_1 = self::viewShareVal('TEXT_1');
+        $arr_text_2 = Info::getItemByKeyword('TEXT_2');
+
         $messages = Utility::messages('messages');
 
         return view('Statics::content.index', [
             'messages'=>$messages,
-            
+            'text_1' => $text_1,
+            'arr_text_2' => $arr_text_2,
         ]);
     }
 

@@ -15,18 +15,23 @@ use App\Library\PHPDev\ThumbImg;
 @section('content')
 <div class="content1">
 	<div class="anhbia">
-		<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/bn_02.png" />
+		@if(isset($dataBannerHead) && !empty($dataBannerHead))
+			@foreach($dataBannerHead as $item)
+				<img src="{{ThumbImg::thumbBaseNormal(CGlobal::FOLDER_BANNER, $item['banner_id'], $item['banner_image'], 2000, 0, '', true, true, false)}}" alt="">
+			@endforeach
+		@endif
 	</div>
 	<div class="container">
 		<div class="gt">
 			<div class="row">
 				<div class="col-md-7">
-					<h3 class="title">VÌ SAO KHANG MẪU NHI GIÚP HỖ TRỢ AN THAI HIỆU QUẢ?</h3>
-					<p class="text">numerating objects: 40, done.Counting objects: 100% (40/40), done. Delta compression</p>
-					<p class="text">numerating objects: 40, done.Counting objects: 100% (40/40), done. Delta compression</p>
+					<h3 class="title">{!! isset($text_1) ? $text_1 : '' !!}</h3>
+					<p class="text">{!! isset($arr_text_2->info_content) ? stripcslashes($arr_text_2->info_content) : '' !!}</p>
 				</div>
 				<div class="col-md-5">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/H_PNG000.png" alt="">
+					@if($arr_text_2->info_img != '' )
+						<img src="{{ ThumbImg::thumbBaseNormal(CGlobal::FOLDER_INFO, $arr_text_2->info_id, $arr_text_2->info_img, 1000,0, '', true, true) }}" alt="">
+					@endif
 				</div>
 			</div>
 		</div>
@@ -87,7 +92,7 @@ use App\Library\PHPDev\ThumbImg;
 						</div>
 						<div class="col-md-12">
 							<p>Triệu chứng *</p>
-							<textarea name="" id="" cols="94%" rows="10"></textarea>
+							<textarea name="" id="" cols="73%" rows="10"></textarea>
 						</div>
 						<div class="col-md-12">
 							<button>Gửi liên hệ</button>

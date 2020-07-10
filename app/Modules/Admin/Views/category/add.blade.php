@@ -99,24 +99,6 @@ use App\Library\PHPDev\ThumbImg;
                                                 <div class="clearfix"></div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="control-label">Hiện menu dọc</label>
-                                                        <select class="form-control input-sm" name="category_menu_left">
-                                                            {!! $optionMenuLeft !!}}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Hiện content</label>
-                                                        <select class="form-control input-sm" name="category_menu_content">
-                                                            {!! $optionContent !!}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
                                                         <label class="control-label">Hiện chân trang</label>
                                                         <select class="form-control input-sm" name="category_menu_footer">
                                                             {!! $optionFooter !!}

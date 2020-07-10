@@ -1,10 +1,4 @@
 <?php
-/*
-* @Created by: DUYNX
-* @Author    : nguyenduypt86@gmail.com
-* @Date      : 06/2016
-* @Version   : 1.0
-*/
 namespace App\Modules\Admin\Controllers;
 
 use App\Library\PHPDev\FuncLib;
