@@ -46,19 +46,34 @@ class BaseStaticsController extends Controller{
         $dataBannerHead = FuncLib::checkBannerShow($dataBannerHead);
         View::share('dataBannerHead', $dataBannerHead);
 
-        $searchSL['banner_status'] = CGlobal::status_show;
-        $searchSL['banner_type'] = 1;
-        $searchSL['field_get'] = 'banner_id,banner_title,banner_title_show,banner_image,banner_link,banner_is_target,banner_is_rel,banner_is_run_time,banner_start_time,banner_end_time';
-        $dataBannerSliderLeft = Banner::getBannerSite($searchSL, $limit=10, 'sliderLeft');
-        $dataBannerSliderLeft = FuncLib::checkBannerShow($dataBannerSliderLeft);
-        View::share('dataBannerSliderLeft',$dataBannerSliderLeft);
+        $searchBannerContent['banner_status'] = CGlobal::status_show;
+        $searchBannerContent['banner_type'] = 1;
+        $searchBannerContent['field_get'] = 'banner_id,banner_title,banner_title_show,banner_image,banner_link,banner_is_target,banner_is_rel,banner_is_run_time,banner_start_time,banner_end_time';
+        $dataBannerContent = Banner::getBannerSite($searchBannerContent, $limit = 1, 'content');
+        $dataBannerContent = FuncLib::checkBannerShow($dataBannerContent);
+        View::share('dataBannerContent', $dataBannerContent);
 
-        $searchSR['banner_status'] = CGlobal::status_show;
-        $searchSR['banner_type'] = 2;
-        $searchSR['field_get'] = 'banner_id,banner_title,banner_title_show,banner_image,banner_link,banner_is_target,banner_is_rel,banner_is_run_time,banner_start_time,banner_end_time';
-        $dataBannerSliderRight = Banner::getBannerSite($searchSR, $limit=10, 'sliderRight');
-        $dataBannerSliderRight = FuncLib::checkBannerShow($dataBannerSliderRight);
-        View::share('dataBannerSliderRight',$dataBannerSliderRight);
+        $searchBannerFooter['banner_status'] = CGlobal::status_show;
+        $searchBannerFooter['banner_type'] = 2;
+        $searchBannerContent['field_get'] = 'banner_id,banner_title,banner_title_show,banner_image,banner_link,banner_is_target,banner_is_rel,banner_is_run_time,banner_start_time,banner_end_time';
+        $dataBannerFooter = Banner::getBannerSite($searchBannerFooter, $limit = 1, 'footer');
+        $dataBannerFooter = FuncLib::checkBannerShow($dataBannerFooter);
+        View::share('dataBannerFooter', $dataBannerFooter);
+
+        $searchBannerLeft['banner_status'] = CGlobal::status_show;
+        $searchBannerLeft['banner_type'] = 3;
+        $searchBannerLeft['field_get'] = 'banner_id,banner_title,banner_title_show,banner_image,banner_link,banner_is_target,banner_is_rel,banner_is_run_time,banner_start_time,banner_end_time';
+        $dataBannerLeft = Banner::getBannerSite($searchBannerLeft, $limit = 1, 'left');
+        $dataBannerLeft = FuncLib::checkBannerShow($dataBannerLeft);
+        View::share('dataBannerLeft', $dataBannerLeft);
+
+        $searchBannerRight['banner_status'] = CGlobal::status_show;
+        $searchBannerRight['banner_type'] = 4;
+        $searchBannerRight['field_get'] = 'banner_id,banner_title,banner_title_show,banner_image,banner_link,banner_is_target,banner_is_rel,banner_is_run_time,banner_start_time,banner_end_time';
+        $dataBannerRight = Banner::getBannerSite($searchBannerRight, $limit = 1, 'right');
+        $dataBannerRight = FuncLib::checkBannerShow($dataBannerRight);
+        View::share('dataBannerRight', $dataBannerRight);
+
 
         $dataField['field_get'] = '';
         $arrCategory = Category::getAllCategory(0, array(), 0);

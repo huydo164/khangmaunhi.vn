@@ -14,16 +14,19 @@ Route::group(['middleware' => ['web'], 'prefix' => '/', 'namespace' => $namespac
 
     Route::get('/', array('as' => 'SIndex','uses' => 'StaticsController@index'));
 
-    Route::get('page-sick', array('as' => 'site.pageSick', 'uses' => 'StaticsController@pageSick'));
+    Route::get('{name}-{id}.html',array('as' => 'site.actionRouter','uses' =>'StaticsController@actionRouter', 'permission_name'=>'Tin tức'))->where('name', '[A-Z0-9a-z)_\-]+')->where('id', '[0-9]+');
 
-    Route::get('page-buy', array('as' => 'site.pageBuy', 'uses' => 'StaticsController@pageBuy'));
+    Route::get('tin-tuc', array('as' => 'site.pageStatic', 'uses' => 'StaticsController@pageStatic'));
+    Route::get('tin-tuc/{name}-{id}.html', array('as' => 'site.detailStatics', 'uses' => 'StaticsController@DetailStatics'))->where('name', '[A-Z0-9a-z_\-]+')->where('id', '[0-9]+');;
 
-    Route::get('page-product', array('as' => 'site.pageProduct', 'uses' => 'StaticsController@pageProduct'));
+    Route::get('benh-ly/{name}-{id}.html', array('as' => 'site.pageContact', 'uses' =>'StaticsController@pageContact'));
 
-    Route::get('page-BVCT', array('as' => 'site.pageBVCT', 'uses' => 'StaticsController@pageBVCT'));
+    Route::get('san-pham/{name}-{id}.html', array('as' => 'site.pageProduct', 'uses' => 'StaticsController@pageProduct'));
 
-    Route::get('page-cam-nang', array('as' => 'site.pageCamnang', 'uses' => 'StaticsController@pageCamnang'));
+    Route::get('dat-mua/{name}-{id}.html', array('as' => 'site.pageBuy', 'uses' => 'StaticsController@pageBuy'));
 
-    Route::get('{name}-{id}.html', array('as' => 'site.actionRouter', 'uses' => 'StaticsController@actionRouter'))->where('name', '[A-Z0-9a-z)_\-]+')->where('id','[0-9]+');
+    Route::post('dang-ky', array('as' => 'site.pageContactPost', 'uses' => 'StaticsController@pageContactPost'));
+
+    Route::get('Tim-kiem', array('as' => 'site.pageStaticsSearch', 'uses' => 'StaticsController@pageSearch'));
 
 });

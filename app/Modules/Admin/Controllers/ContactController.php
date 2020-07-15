@@ -55,6 +55,7 @@ class ContactController extends BaseAdminController{
     }
 
     public function getItem($id = 0){
+        Loader::loadJS('libs/ckeditor/ckeditor.js', CGlobal::$postHead);
         $data = array();
 
         if($id > 0){
@@ -72,13 +73,14 @@ class ContactController extends BaseAdminController{
     }
 
     public function postItem($id = 0){
+        Loader::loadJS('libs/ckeditor/ckeditor.js', CGlobal::$postHead);
         $data = array();
         $id_hiden = (int)Request::get('id_hiden', 0);
 
         $dataSave = array(
             'contact_name' => array('value' => addslashes(Request::get('contact_name')), 'require' => 1, 'messages', 'Tên không được trống!'),
             'contact_phone' => array('value' => addslashes(Request::get('contact_phone')), 'require' => 0),
-            'contact_local' => array('value' => addslashes(Request::get('contact_local')), 'require' => 0),
+            'contact_content' => array('value' => addslashes(Request::get('contact_content')), 'require' => 0),
             'contact_created' => array('value' => time()),
             'contact_status' => array('value' => (int)Request::get('contact_status'))
         );
@@ -95,8 +97,8 @@ class ContactController extends BaseAdminController{
             return Redirect::route('admin.contact');
         }
         else{
-            foreach ($dataSave as $key => $val){
-                $data[$key] = $val['value'];
+            foreach ($dataSave as $key => $value){
+                $data[$key] = $value['value'];
             }
         }
 

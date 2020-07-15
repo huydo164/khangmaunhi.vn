@@ -335,18 +335,11 @@ class FuncLib{
     }
 
     //Buid Link Statics Detail
-    static function buildLinkDetailStatic($id = 0, $statics_title = 'st'){
+    static function buildLinkDetailStatic($id = 0, $statics_title = 'Tin-tuc'){
         if ($id > 0) {
             return URL::route('site.detailStatics', array('id' => $id, 'name' => strtolower(FuncLib::safeTitle($statics_title))));
         }
         return '#';
     }
 
-    //Build link Feedback Detail
-    static function buildLinkDetailFeedback($id = 0, $feedback_title = 'chia-sẻ-khach-hang'){
-        if ($id > 0){
-            return URL::route('site.detailFeedback', array('id' => $id, 'name' => strtolower(FuncLib::safeTitle($feedback_title))));
-        }
-        return '#';
-    }
 }

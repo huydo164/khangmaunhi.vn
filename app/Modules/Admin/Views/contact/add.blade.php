@@ -64,9 +64,9 @@ use App\Library\PHPDev\ThumbImg;
                                                         <div class="clearfix"></div>
                                                         <div class="col-sm-12">
                                                             <div class="form-group">
-                                                                <label class="control-label">Địa chỉ</label>
+                                                                <label class="control-label">Nội dung</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control input-sm" name="contact_local" value="@if(isset($data['contact_local'])){{stripslashes($data['contact_local'])}}@endif" >
+                                                                    <textarea class="form-control input-sm" name="contact_content">@if(isset($data['contact_content'])){{stripslashes($data['contact_content'])}}@endif</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,5 +105,9 @@ use App\Library\PHPDev\ThumbImg;
             </div>
         </div>
     </div>
+    <script>
+        CKEDITOR.replace('contact_content');
+
+    </script>
 @stop
 

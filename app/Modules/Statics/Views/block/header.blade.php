@@ -3,6 +3,7 @@ use App\Library\PHPDev\CGlobal;
 use App\Library\PHPDev\FuncLib;
 use App\Library\PHPDev\ThumbImg;
 ?>
+{!! isset($messages) && ($messages != '') ? $messages : '' !!}
 <div id="header">
     <div class="container">
         <div class="logo-web">
@@ -14,14 +15,20 @@ use App\Library\PHPDev\ThumbImg;
                     Hotline: <span>0982.91.55.53</span>
                 </div>
                 <div class="search">
-                    <form action="" method="GET">
-                        <input type="text" name="" value="" class="form-control">
+                    <form action="{{ URL::route('site.pageStaticsSearch')  }}" method="GET">
+                        {!! csrf_field() !!}
+                        <input type="text" name="statics_title" value="" class="form-control">
                         <button type="submit" class="btn btn-primary icon-search"></button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="menu">
+            <div class="logo">
+                <a href="">
+                    <img src="http://localhost/project.vn/khangmaunhi/public/assets/frontend/img/LOGO01.png" alt="">
+                </a>
+            </div>
             <div class="navigation mNavigation">
                            <span class="navigationIcon">
                                <span></span>
@@ -51,7 +58,7 @@ use App\Library\PHPDev\ThumbImg;
                                     @endif
                                 @endforeach
                                 <li>
-                                    <a @if($i > 0) @endif title="{{$cat->category_title}}" href="">
+                                    <a @if($i > 0) @endif title="{{$cat->category_title}}" href="@if($cat->category_link_replace != ''){{$cat->category_link_replace}}@else{{FuncLib::buildLinkCategory($cat->category_id, $cat->category_title)}}@endif">
                                         {{$cat->category_title}}
                                     </a>
                                 </li>

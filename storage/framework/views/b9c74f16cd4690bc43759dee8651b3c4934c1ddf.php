@@ -3,6 +3,8 @@ use App\Library\PHPDev\CGlobal;
 use App\Library\PHPDev\FuncLib;
 use App\Library\PHPDev\ThumbImg;
 ?>
+<?php echo isset($messages) && ($messages != '') ? $messages : ''; ?>
+
 <div id="header">
     <div class="container">
         <div class="logo-web">
@@ -14,14 +16,21 @@ use App\Library\PHPDev\ThumbImg;
                     Hotline: <span>0982.91.55.53</span>
                 </div>
                 <div class="search">
-                    <form action="" method="GET">
-                        <input type="text" name="" value="" class="form-control">
+                    <form action="<?php echo e(URL::route('site.pageStaticsSearch')); ?>" method="GET">
+                        <?php echo csrf_field(); ?>
+
+                        <input type="text" name="statics_title" value="" class="form-control">
                         <button type="submit" class="btn btn-primary icon-search"></button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="menu">
+            <div class="logo">
+                <a href="">
+                    <img src="http://localhost/project.vn/khangmaunhi/public/assets/frontend/img/LOGO01.png" alt="">
+                </a>
+            </div>
             <div class="navigation mNavigation">
                            <span class="navigationIcon">
                                <span></span>
@@ -51,7 +60,7 @@ use App\Library\PHPDev\ThumbImg;
                                     <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <li>
-                                    <a <?php if($i > 0): ?> <?php endif; ?> title="<?php echo e($cat->category_title); ?>" href="">
+                                    <a <?php if($i > 0): ?> <?php endif; ?> title="<?php echo e($cat->category_title); ?>" href="<?php if($cat->category_link_replace != ''): ?><?php echo e($cat->category_link_replace); ?><?php else: ?><?php echo e(FuncLib::buildLinkCategory($cat->category_id, $cat->category_title)); ?><?php endif; ?>">
                                         <?php echo e($cat->category_title); ?>
 
                                     </a>

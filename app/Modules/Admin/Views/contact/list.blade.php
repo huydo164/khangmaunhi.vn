@@ -18,7 +18,7 @@ use App\Library\PHPDev\CGlobal;
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="{{URL::route('admin.dashboard')}}">Trang chủ</a>
                     </li>
-                    <li class="active">Quản lý bài viết tĩnh</li>
+                    <li class="active">Quản lý danh sách đăng ký</li>
                 </ul>
             </div>
             <div class="page-content">
@@ -77,7 +77,6 @@ use App\Library\PHPDev\CGlobal;
                                         </th>
                                         <th width="20%">Tên</th>
                                         <th width="10%">Số điện thoại</th>
-                                        <th width="20%">Địa chỉ</th>
                                         <th width="5%">Ngày tạo</th>
                                         <th width="5%">Trạng thái</th>
                                         <th width="5%">Action</th>
@@ -95,7 +94,6 @@ use App\Library\PHPDev\CGlobal;
                                             </td>
                                             <td><a title="{{$item->contact_name}}" href="">{{$item['contact_name']}}</a></td>
                                             <td>{{ $item['contact_phone'] }}</td>
-                                            <td>{{ $item['contact_local'] }}</td>
                                             <td>{{date('d/m/Y', $item['contact_created'])}}</td>
                                             <td>
                                                 @if($item['contact_status'] == '1')

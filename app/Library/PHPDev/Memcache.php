@@ -47,4 +47,6 @@ class Memcache{
 	const CACHE_STATICS_CAT_ID = 'cache_statics_cat_id_';
 	//Contact
     const CACHE_CONTACT_ID = 'cache_contact_id_';
+    //Buy
+    const CACHE_BUY_ID = 'cache_buy_id_';
 }

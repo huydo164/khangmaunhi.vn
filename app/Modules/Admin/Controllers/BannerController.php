@@ -22,7 +22,9 @@ class BannerController extends BaseAdminController{
         -1 => '--Chọn--',
         0 => 'Đầu trang',
         1 => 'trong trang',
-        2 => 'logo giấy chứng nhận',
+        2 => 'Cuối trang',
+        3 => 'Trái',
+        4 => 'Phải',
     );
 
     private $error = '';

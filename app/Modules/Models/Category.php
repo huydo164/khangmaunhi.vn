@@ -53,7 +53,7 @@ class Category extends Model{
             }
 
             $total = $query->count();
-            $query->orderBy('category_type_keyword', 'desc');
+            $query->orderBy('category_type_keyword', 'asc');
 
             $fields = (isset($dataSearch['field_get']) && trim($dataSearch['field_get']) != '') ? explode(',',trim($dataSearch['field_get'])): array();
             if(!empty($fields)){

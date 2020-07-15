@@ -36,93 +36,47 @@ use App\Library\PHPDev\ThumbImg;
 			</div>
 		</div>
 		<div class="chuyen-gia">
-			<h3 class="title">CHUYÊN GIA NÓI GÌ VỀ SẢN PHẨM</h3>
+			<h3 class="title">{!! isset($text_2) ? $text_2 : '' !!}</h3>
 			<div class="row">
-				<div class="col-md-4">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/chuyen-gia.png" />
-					<p class="name">Bác sĩ Nguyễn Lan Anh</p>
-					<p class="quote">abc def ghijklmn on pq qladf jwnf klsw</p>
-				</div>
-				<div class="col-md-4">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/chuyen-gia.png" />
-					<p class="name">Bác sĩ Nguyễn Lan Anh</p>
-					<p class="quote">abc def ghijklmn on pq qladf jwnf klsw</p>
-				</div>
-				<div class="col-md-4">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/chuyen-gia.png" />
-					<p class="name">Bác sĩ Nguyễn Lan Anh</p>
-					<p class="quote">abc def ghijklmn on pq qladf jwnf klsw</p>
-				</div>
+				@if(isset($data_cat_1) && !empty($data_cat_1))
+					@foreach($data_cat_1 as $item)
+						<div class="col-md-4">
+							<div class="img-chuyen-gia">
+								@if($item->statics_image != '')
+									<img src="{{ ThumbImg::thumbBaseNormal(CGlobal::FOLDER_STATICS, $item->statics_id, $item->statics_image, 800, 0, '', true, true) }}" alt="">
+								@endif
+							</div>
+							<p class="name">{{ $item->statics_title }}</p>
+							<p class="quote">{!! $item->statics_content !!}</p>
+						</div>
+					@endforeach
+				@endif
+
 			</div>
 		</div>
 		<div class="khach-hang">
-			<h3 class="title">KHÁCH HÀNG NÓI GÌ VỀ SẢN PHẨM</h3>
+			<h3 class="title">{!! isset($text_3) ? $text_3 : '' !!}</h3>
 			<div class="row">
-				<div class="col-md-4">
-					<iframe width="349" height="219" src="https://www.youtube.com/embed/RoTvidpL1gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p>skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-				</div>
-				<div class="col-md-4">
-					<iframe width="349" height="219" src="https://www.youtube.com/embed/RoTvidpL1gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p>skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-				</div>
-				<div class="col-md-4">
-					<iframe width="349" height="219" src="https://www.youtube.com/embed/RoTvidpL1gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p>skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-				</div>
+				@if(isset($data_cat_2) && !empty($data_cat_2))
+					@foreach($data_cat_2 as $key => $item)
+						<div class="col-md-4">
+							<iframe width="349" height="219" src="{{ $item->statics_video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<p>{{ $item->statics_intro }}</p>
+						</div>
+					@endforeach
+				@endif
 			</div>
 		</div>
 	</div>
 	<div class="gioithieu" >
-		<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/anhgt.png"  width="100%" alt="">
+		@if(isset($dataBannerContent) && !empty($dataBannerContent)) 
+			@foreach($dataBannerContent as $item)
+				<img src="{{ ThumbImg::thumbBaseNormal(CGlobal::FOLDER_BANNER, $item['banner_id'], $item['banner_image'], 2000,0, '', true, true, false) }}" width="100%" alt="">
+			@endforeach
+		@endif
 	</div>
 	<div class="container">
-		<div class="dang-ky">
-			<div class="row">
-				<div class="col-md-8">
-					<h5>ĐĂNG KÝ GẶP DƯỢC SĨ</h5>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Họ và tên *</p>
-							<input type="text" />
-						</div>
-						<div class="col-md-6">
-							<p>Điện thoại*</p>
-							<input type="text" />
-						</div>
-						<div class="col-md-12">
-							<p>Triệu chứng *</p>
-							<textarea name="" id="" cols="73%" rows="10"></textarea>
-						</div>
-						<div class="col-md-12">
-							<button>Gửi liên hệ</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<h5>TIN MỚI</h5>
-					<ul>
-						<li>
-							<p class="title">Bà bầu nên kiêng gì</p>
-							<p class="date">07/09/2018</p>
-							<p class="text">skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-						</li>
-						<li>
-							<p class="title">Bà bầu nên kiêng gì</p>
-							<p class="date">07/09/2018</p>
-							<p class="text">skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-						</li>
-						<li>
-							<p class="title">Bà bầu nên kiêng gì</p>
-							<p class="date">07/09/2018</p>
-							<p class="text">skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-						</li>
-					</ul>
-
-				</div>
-			</div>
-		</div>
-
+		@include('Statics::block.bottom')
 	</div>
 </div>
 @stop

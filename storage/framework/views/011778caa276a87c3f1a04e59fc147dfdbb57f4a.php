@@ -197,20 +197,6 @@ use App\Library\PHPDev\CGlobal;
                                                         <?php endif; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php if($sub['category_menu_left'] == '1'): ?>
-                                                            <i class="fa fa-check fa-admin green"></i>
-                                                        <?php else: ?>
-                                                            <i class="fa fa-remove fa-admin red"></i>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <?php if($sub['category_menu_content'] == '1'): ?>
-                                                            <i class="fa fa-check fa-admin green"></i>
-                                                        <?php else: ?>
-                                                            <i class="fa fa-remove fa-admin red"></i>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td class="text-center">
                                                         <?php if($sub['category_menu_footer'] == '1'): ?>
                                                             <i class="fa fa-check fa-admin green"></i>
                                                         <?php else: ?>

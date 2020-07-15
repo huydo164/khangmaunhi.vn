@@ -36,93 +36,47 @@ use App\Library\PHPDev\ThumbImg;
 			</div>
 		</div>
 		<div class="chuyen-gia">
-			<h3 class="title">CHUYÊN GIA NÓI GÌ VỀ SẢN PHẨM</h3>
+			<h3 class="title"><?php echo isset($text_2) ? $text_2 : ''; ?></h3>
 			<div class="row">
-				<div class="col-md-4">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/chuyen-gia.png" />
-					<p class="name">Bác sĩ Nguyễn Lan Anh</p>
-					<p class="quote">abc def ghijklmn on pq qladf jwnf klsw</p>
-				</div>
-				<div class="col-md-4">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/chuyen-gia.png" />
-					<p class="name">Bác sĩ Nguyễn Lan Anh</p>
-					<p class="quote">abc def ghijklmn on pq qladf jwnf klsw</p>
-				</div>
-				<div class="col-md-4">
-					<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/chuyen-gia.png" />
-					<p class="name">Bác sĩ Nguyễn Lan Anh</p>
-					<p class="quote">abc def ghijklmn on pq qladf jwnf klsw</p>
-				</div>
+				<?php if(isset($data_cat_1) && !empty($data_cat_1)): ?>
+					<?php $__currentLoopData = $data_cat_1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<div class="col-md-4">
+							<div class="img-chuyen-gia">
+								<?php if($item->statics_image != ''): ?>
+									<img src="<?php echo e(ThumbImg::thumbBaseNormal(CGlobal::FOLDER_STATICS, $item->statics_id, $item->statics_image, 800, 0, '', true, true)); ?>" alt="">
+								<?php endif; ?>
+							</div>
+							<p class="name"><?php echo e($item->statics_title); ?></p>
+							<p class="quote"><?php echo $item->statics_content; ?></p>
+						</div>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+				<?php endif; ?>
+
 			</div>
 		</div>
 		<div class="khach-hang">
-			<h3 class="title">KHÁCH HÀNG NÓI GÌ VỀ SẢN PHẨM</h3>
+			<h3 class="title"><?php echo isset($text_3) ? $text_3 : ''; ?></h3>
 			<div class="row">
-				<div class="col-md-4">
-					<iframe width="349" height="219" src="https://www.youtube.com/embed/RoTvidpL1gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p>skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-				</div>
-				<div class="col-md-4">
-					<iframe width="349" height="219" src="https://www.youtube.com/embed/RoTvidpL1gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p>skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-				</div>
-				<div class="col-md-4">
-					<iframe width="349" height="219" src="https://www.youtube.com/embed/RoTvidpL1gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<p>skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-				</div>
+				<?php if(isset($data_cat_2) && !empty($data_cat_2)): ?>
+					<?php $__currentLoopData = $data_cat_2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<div class="col-md-4">
+							<iframe width="349" height="219" src="<?php echo e($item->statics_video); ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<p><?php echo e($item->statics_intro); ?></p>
+						</div>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
 	<div class="gioithieu" >
-		<img src="http://localhost:8888/khangmaunhi.vn/public/assets/frontend/img/anhgt.png"  width="100%" alt="">
+		<?php if(isset($dataBannerContent) && !empty($dataBannerContent)): ?> 
+			<?php $__currentLoopData = $dataBannerContent; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+				<img src="<?php echo e(ThumbImg::thumbBaseNormal(CGlobal::FOLDER_BANNER, $item['banner_id'], $item['banner_image'], 2000,0, '', true, true, false)); ?>" width="100%" alt="">
+			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+		<?php endif; ?>
 	</div>
 	<div class="container">
-		<div class="dang-ky">
-			<div class="row">
-				<div class="col-md-8">
-					<h5>ĐĂNG KÝ GẶP DƯỢC SĨ</h5>
-					<div class="row">
-						<div class="col-md-6">
-							<p>Họ và tên *</p>
-							<input type="text" />
-						</div>
-						<div class="col-md-6">
-							<p>Điện thoại*</p>
-							<input type="text" />
-						</div>
-						<div class="col-md-12">
-							<p>Triệu chứng *</p>
-							<textarea name="" id="" cols="73%" rows="10"></textarea>
-						</div>
-						<div class="col-md-12">
-							<button>Gửi liên hệ</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<h5>TIN MỚI</h5>
-					<ul>
-						<li>
-							<p class="title">Bà bầu nên kiêng gì</p>
-							<p class="date">07/09/2018</p>
-							<p class="text">skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-						</li>
-						<li>
-							<p class="title">Bà bầu nên kiêng gì</p>
-							<p class="date">07/09/2018</p>
-							<p class="text">skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-						</li>
-						<li>
-							<p class="title">Bà bầu nên kiêng gì</p>
-							<p class="date">07/09/2018</p>
-							<p class="text">skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp skd kdskd skdsd skdsdsdk sdsdkdsjkdsd sdjsdsdk skdskd sálp</p>
-						</li>
-					</ul>
-
-				</div>
-			</div>
-		</div>
-
+		<?php echo $__env->make('Statics::block.bottom', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	</div>
 </div>
 <?php $__env->stopSection(); ?>

@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use App\Modules\Models\Category;
-use App\Modules\Models\Trash;
 use App\Library\PHPDev\CGlobal;
 use App\Library\PHPDev\Loader;
 use App\Library\PHPDev\Pagging;
@@ -224,7 +223,6 @@ class CategoryController extends BaseAdminController{
         if(Session::token() === $token){
             if(!empty($listId) && is_array($listId)){
                 foreach($listId as $id){
-                    Trash::addItem($id, 'Category', CGlobal::FOLDER_CATEGORY, 'category_id', 'category_title', 'category_image', '');
                     Category::deleteId($id);
                 }
                 Utility::messages('messages', 'Xóa thành công!', 'success');
